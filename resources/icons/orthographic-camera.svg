@@ -30,7 +30,7 @@
      id="defs3714" />
   <sodipodi:namedview
      pagecolor="#ffffff"
-     bordercolor="#666666"
+     bordercolor="#333333"
      borderopacity="1"
      objecttolerance="10"
      gridtolerance="10"
@@ -51,12 +51,12 @@
   <style
      type="text/css"
      id="style3706">
-.st0{fill:#DDDDDD;stroke:#DDDDDD;}
+.st0{fill:#333333;stroke:#333333;}
 </style>
   <path
      class="st0"
      d="M 19.752542,8.6494916 V 17.769491 H 4.5525423 V 8.6494916 Z m 1.52,-1.52 H 3.0325423 V 19.289491 H 21.272542 Z M 9.8725425,11.689491 H 6.0725423 v -1.52 H 9.8725425 Z M 6.8325422,6.3694916 H 4.5525423 V 5.6094917 h 2.2799999 z m 8.3599998,5.3199994 c 0.83828,0 1.52,0.68172 1.52,1.52 0,0.83828 -0.68172,1.52 -1.52,1.52 -0.83828,0 -1.52,-0.68172 -1.52,-1.52 0,-0.83828 0.68172,-1.52 1.52,-1.52 z m 0,-1.52 c -1.67884,0 -3.04,1.361159 -3.04,3.04 0,1.67884 1.36116,3.04 3.04,3.04 1.67884,0 3.04,-1.36116 3.04,-3.04 0,-1.678841 -1.36116,-3.04 -3.04,-3.04 z"
      id="path3708"
      inkscape:connector-curvature="0"
-     style="fill:#dddddd;stroke:#dddddd;stroke-width:0.75999999" />
+     style="fill:#333333;stroke:#333333;stroke-width:0.75999999" />
 </svg>
