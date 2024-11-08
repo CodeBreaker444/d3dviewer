@@ -60,6 +60,7 @@ export class Sidebar {
   initToolbar() {
     // ANGLE
     let elToolbar = $('#tools');
+
     elToolbar.append(
       this.createToolIcon(
         Potree.resourcePath + '/icons/angle.png',
@@ -83,6 +84,9 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -112,6 +116,9 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -138,6 +145,8 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -166,6 +175,8 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -196,6 +207,9 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -227,6 +241,9 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -253,6 +270,9 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -273,6 +293,9 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -293,6 +316,9 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -314,6 +340,9 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -335,6 +364,9 @@ export class Sidebar {
           );
           $.jstree.reference(jsonNode.id).deselect_all();
           $.jstree.reference(jsonNode.id).select_node(jsonNode.id);
+
+          $(event.currentTarget).addClass('active');
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );
@@ -347,9 +379,7 @@ export class Sidebar {
         () => {
           this.viewer.scene.removeAllMeasurements();
           console.log('removing stuff');
-          setTimeout(() => {
-            elToolbar.removeClass('active');
-          }, 10);
+          $(event.currentTarget).siblings('img').removeClass('active');
         }
       )
     );

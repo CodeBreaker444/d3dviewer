@@ -203,9 +203,9 @@ export class Viewer extends EventDispatcher {
 
           const measurementToolsList =
             measureMentTools.find('.measurement-tools');
-          measurementToolsList.on('click', () => {
-            measurementToolsList.addClass('active');
-          });
+          // measurementToolsList.on('click', () => {
+          //   // measurementToolsList.addClass('active');
+          // });
 
           $(domElement).append(measureMentTools);
         }
@@ -620,7 +620,7 @@ export class Viewer extends EventDispatcher {
         $(`<div class="media-section media-section-gap translate-media">
          <div class="bottom-buttons">
           <button class="media-button">
-             <img class="media-gallery-img" src="${Potree.resourcePath}/icons/imagery-show-1x.png" height="16" width="60px" />
+             <img class="media-gallery-img" src="${Potree.resourcePath}/icons/gallery.png" height="16px" width="16px" />
              <img class="media-icon-img" src="${Potree.resourcePath}/icons/up-chevron.png" height="16" width="16" />
           </button>
           <button class="hide-tools-button"> 
@@ -1506,10 +1506,10 @@ export class Viewer extends EventDispatcher {
         imgMenuToggle.src = new URL(
           Potree.resourcePath + '/icons/arrow_right_new.svg'
         ).href;
-        imgMenuToggle.onclick = this.toggleSidebar;
         let menuToggleWrapper = document.createElement('div');
         menuToggleWrapper.classList.add('potree_menu_toggle');
         menuToggleWrapper.append(imgMenuToggle);
+        menuToggleWrapper.onclick = this.toggleSidebar;
 
         let imgMapToggle = document.createElement('img');
         imgMapToggle.src = new URL(
