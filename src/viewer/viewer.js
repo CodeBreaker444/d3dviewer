@@ -74,38 +74,11 @@ export class Viewer extends EventDispatcher {
 
         if ($(domElement).find('.magic-button').length === 0) {
           let magicButton = $(
-            `<div class="magic-button-container" ><button class="magic-button">
-      
-<svg class="wand-icon" width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M333.54 45.319C340.518 27.5603 365.604 27.5603 372.582 45.319L381.713 68.5555L404.853 77.7152C422.545 84.7191 422.545 109.805 404.853 116.809L381.713 125.969L372.582 149.206C365.604 166.964 340.518 166.964 333.54 149.206L324.41 125.969L301.269 116.809C283.578 109.806 283.578 84.7191 301.269 77.7152L324.41 68.5555L333.54 45.319ZM353.06 53.971L361.909 76.487C364.034 81.8967 368.307 86.1924 373.719 88.3356L396.271 97.2623L373.719 106.189C368.307 108.332 364.034 112.628 361.909 118.038L353.06 140.554L344.213 118.038C342.089 112.628 337.815 108.332 332.401 106.189L309.852 97.2623L332.401 88.3356C337.815 86.1924 342.089 81.8967 344.213 76.487L353.06 53.971Z" fill="url(#paint0_linear_438_2506)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M70.7029 70.7029C100.973 40.4324 150.051 40.4324 180.322 70.7029L441.297 331.678C471.567 361.948 471.567 411.027 441.297 441.297C411.027 471.567 361.948 471.567 331.678 441.297L70.7029 180.322C40.4324 150.051 40.4324 100.973 70.7029 70.7029ZM157.694 93.3303C139.921 75.5564 111.104 75.5564 93.3303 93.3303C75.5565 111.104 75.5565 139.921 93.3303 157.694L127.171 191.535L191.535 127.171L157.694 93.3303ZM354.306 418.669L149.798 214.163L214.163 149.798L418.669 354.306C436.444 372.079 436.444 400.896 418.669 418.669C400.896 436.444 372.079 436.444 354.306 418.669Z" fill="url(#paint1_linear_438_2506)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M455.083 190.861C448.105 173.102 423.017 173.102 416.038 190.861L412.742 199.251L404.395 202.555C386.701 209.559 386.701 234.645 404.395 241.649L412.742 244.954L416.038 253.344C423.017 271.102 448.105 271.102 455.083 253.344L458.379 244.954L466.726 241.649C484.418 234.645 484.418 209.559 466.726 202.555L458.379 199.251L455.083 190.861ZM435.561 199.513L432.546 207.182C430.421 212.592 426.148 216.888 420.734 219.032L412.977 222.101L420.734 225.173C426.148 227.317 430.421 231.612 432.546 237.022L435.561 244.691L438.575 237.022C440.7 231.612 444.971 227.317 450.385 225.173L458.144 222.101L450.385 219.032C444.971 216.888 440.7 212.592 438.575 207.182L435.561 199.513Z" fill="url(#paint2_linear_438_2506)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M99.5806 322.652C106.559 304.894 131.645 304.894 138.623 322.652L141.92 331.042L150.268 334.347C167.961 341.35 167.961 366.436 150.267 373.44L141.92 376.744L138.623 385.135C131.645 402.893 106.559 402.893 99.5806 385.135L96.2837 376.744L87.9366 373.44C70.2434 366.436 70.2434 341.35 87.9364 334.347L96.2837 331.042L99.5806 322.652ZM116.088 338.974L119.102 331.304L122.116 338.974C124.241 344.384 128.513 348.678 133.927 350.822L141.686 353.894L133.927 356.964C128.513 359.108 124.241 363.403 122.116 368.813L119.102 376.482L116.088 368.813C113.963 363.403 109.69 359.108 104.276 356.964L96.5178 353.894L104.276 350.822C109.69 348.678 113.963 344.384 116.088 338.974Z" fill="url(#paint3_linear_438_2506)"/>
-<defs>
-<linearGradient id="paint0_linear_438_2506" x1="264" y1="32" x2="264" y2="464" gradientUnits="userSpaceOnUse">
-<stop stop-color="white"/>
-<stop offset="1" stop-color="white"/>
-</linearGradient>
-<linearGradient id="paint1_linear_438_2506" x1="264" y1="31.9999" x2="264" y2="464" gradientUnits="userSpaceOnUse">
-<stop stop-color="white"/>
-<stop offset="1" stop-color="white"/>
-</linearGradient>
-<linearGradient id="paint2_linear_438_2506" x1="264" y1="32.0001" x2="264" y2="464" gradientUnits="userSpaceOnUse">
-<stop stop-color="white"/>
-<stop offset="1" stop-color="white"/>
-</linearGradient>
-<linearGradient id="paint3_linear_438_2506" x1="264" y1="31.9999" x2="264" y2="464" gradientUnits="userSpaceOnUse">
-<stop stop-color="white"/>
-<stop offset="1" stop-color="white"/>
-</linearGradient>
-</defs>
-</svg>
-      <span class="button-text">ai inspect</span>
-      <div class="star" style="top: 20%; left: 20%;"></div>
-      <div class="star" style="top: 30%; right: 25%;"></div>
-      <div class="star" style="bottom: 25%; left: 30%;"></div>
-      <div class="star" style="bottom: 20%; right: 20%;"></div>
-    </button> </div>`
+            `<div class="magic-button-container" >
+               <div id='box' class="magic-button">
+                  <img src="${Potree.resourcePath}/icons/magic-stick.svg" width="20px" height="20px" />
+              </div>
+            </div>`
           );
 
           $(domElement).append(magicButton);

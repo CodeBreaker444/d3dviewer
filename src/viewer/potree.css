@@ -508,16 +508,12 @@ body {
 }
 
 .button-icon.active {
-  border: 1px black solid;
+  /* border: 1px black solid; */
+  background: #d1e7f2;
   padding: 4px;
   border-radius: 5px;
   width: 24px !important;
   height: 24px !important ;
-}
-
-.button-icon:hover {
-  opacity: 1;
-  filter: brightness(1.2);
 }
 
 .ui-widget-content {
@@ -961,7 +957,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  background: rgba(255, 255, 255, 0.2);
+  /* background: rgba(255, 255, 255, 0.2); */
+  background: rgba(255, 255, 255, 1);
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
@@ -970,7 +967,7 @@ body {
 
 /* Hover state */
 .measurement-tools:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 /* Active state */
@@ -1117,112 +1114,92 @@ body {
 
 .magic-button-container {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 10;
+  top: 15px;
+  right: 15px;
+  z-index: 11;
 }
 
 .magic-button {
   position: relative;
-  padding: 10px 20px;
-  background: linear-gradient(45deg, #2a2a2a, #3a3a3a);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  justify-content: center;
+  padding: 18px;
+  background: #000;
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 10em;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: box-shadow 250ms ease-in-out;
+}
+
+.magic-button:hover {
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.magic-button:hover::before {
+  width: 100%;
+  height: 100%;
+  filter: blur(0.5em);
+  opacity: 1;
 }
 
 .magic-button::before {
   content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(89, 227, 255, 0.1), transparent 70%);
   opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.magic-button:hover::before {
-  opacity: 1;
-  animation: rotate 10s linear infinite;
-}
-
-.magic-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(89, 227, 255, 0.3);
-}
-
-.button-text {
-  color: white;
-  font-family: 'Arial', sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.wand-icon {
-  width: 24px;
-  height: 24px;
-  fill: white;
-  transition: transform 0.3s ease;
-}
-
-.magic-button:hover .wand-icon {
-  animation: wandFloat 2s ease-in-out infinite;
-}
-
-.star {
   position: absolute;
-  width: 3px;
-  height: 3px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0;
-  pointer-events: none;
+  left: 0;
+  top: 0;
+  background: linear-gradient(
+    45deg,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000
+  );
+  background-size: 200%;
+  width: 100%;
+  height: 100%;
+  border-radius: 10em;
+  z-index: -1;
+  animation: ai-button-glow 5s linear infinite;
+  transition:
+    filter 250ms ease-in-out,
+    opacity 250ms ease-in-out;
 }
 
-.magic-button:hover .star {
-  animation: twinkle 1.5s linear infinite;
+.magic-button img {
+  position: relative;
+  z-index: 1;
+  animation: pulseImage 2s ease-in-out infinite;
+  filter: brightness(1.2);
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes wandFloat {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-}
-
-@keyframes twinkle {
+@keyframes ai-button-glow {
   0% {
-    opacity: 0;
-    transform: scale(0);
+    background-position: 0 0;
   }
   50% {
-    opacity: 1;
-    transform: scale(1);
+    background-position: 200% 0;
   }
   100% {
-    opacity: 0;
-    transform: scale(0);
+    background-position: 0 0;
+  }
+}
+
+@keyframes pulseImage {
+  0% {
+    transform: scale(1);
+    filter: brightness(1.2);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.5) drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1.2);
   }
 }
