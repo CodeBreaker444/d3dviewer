@@ -63,7 +63,7 @@ export class Sidebar {
 
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/angle.png',
+        Potree.resourcePath + '/icons/angle-grey.png',
         '[title]tt.angle_measurement',
         () => {
           $('#menu_measurements').next().slideDown();
@@ -94,7 +94,7 @@ export class Sidebar {
     // POINT
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/point.svg',
+        Potree.resourcePath + '/icons/point-grey.png',
         '[title]tt.point_measurement',
         () => {
           $('#menu_measurements').next().slideDown();
@@ -126,7 +126,7 @@ export class Sidebar {
     // DISTANCE
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/distance.svg',
+        Potree.resourcePath + '/icons/distance-grey.png',
         '[title]tt.distance_measurement',
         () => {
           $('#menu_measurements').next().slideDown();
@@ -154,7 +154,7 @@ export class Sidebar {
     // HEIGHT
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/height.svg',
+        Potree.resourcePath + '/icons/height-grey.png',
         '[title]tt.height_measurement',
         () => {
           $('#menu_measurements').next().slideDown();
@@ -184,7 +184,7 @@ export class Sidebar {
     // CIRCLE
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/circle.svg',
+        Potree.resourcePath + '/icons/circle-grey.png',
         '[title]tt.circle_measurement',
         () => {
           $('#menu_measurements').next().slideDown();
@@ -217,7 +217,7 @@ export class Sidebar {
     // AZIMUTH
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/azimuth.svg',
+        Potree.resourcePath + '/icons/azimuth-grey.png',
         'Azimuth',
         () => {
           $('#menu_measurements').next().slideDown();
@@ -251,7 +251,7 @@ export class Sidebar {
     // AREA
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/area.svg',
+        Potree.resourcePath + '/icons/area-backup-grey.png',
         '[title]tt.area_measurement',
         () => {
           $('#menu_measurements').next().slideDown();
@@ -280,7 +280,7 @@ export class Sidebar {
     // VOLUME
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/volume.svg',
+        Potree.resourcePath + '/icons/volume-grey.png',
         '[title]tt.volume_measurement',
         () => {
           let volume = this.volumeTool.startInsertion();
@@ -303,7 +303,7 @@ export class Sidebar {
     // SPHERE VOLUME
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/sphere_distances.svg',
+        Potree.resourcePath + '/icons/sphere-distances-grey.png',
         '[title]tt.volume_measurement',
         () => {
           let volume = this.volumeTool.startInsertion({ type: SphereVolume });
@@ -326,7 +326,7 @@ export class Sidebar {
     // PROFILE
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/profile.svg',
+        Potree.resourcePath + '/icons/profile-grey.png',
         '[title]tt.height_profile',
         () => {
           $('#menu_measurements').next().slideDown();
@@ -350,7 +350,7 @@ export class Sidebar {
     // ANNOTATION
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/annotation.svg',
+        Potree.resourcePath + '/icons/annotation-grey.png',
         '[title]tt.annotation',
         () => {
           $('#menu_measurements').next().slideDown();
@@ -374,7 +374,7 @@ export class Sidebar {
     // REMOVE ALL
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/reset_tools.svg',
+        Potree.resourcePath + '/icons/reset-tools-grey.png',
         '[title]tt.remove_all_measurement',
         () => {
           this.viewer.scene.removeAllMeasurements();

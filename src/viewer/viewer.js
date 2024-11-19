@@ -589,6 +589,40 @@ export class Viewer extends EventDispatcher {
     const domElement = document.getElementById('potree_render_area');
 
     if ($(domElement).find('.media-section').length === 0) {
+      let mediaContent;
+      console.log(media.length);
+
+      if (media.length !== 0) {
+        mediaContent = `
+        <div class="media-scroll">  
+           ${media
+             .map((item) => {
+               return `<div class="media-item">
+                        <img src="${item}" alt="media-image" />
+                      </div>`;
+             })
+             .join(' ')}
+          </div>`;
+      } else {
+        mediaContent = `
+<div class="no-media-view">
+  <div class="placeholder-content">
+    <div class="placeholder-icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <path d="M20.4 14.5L16 10 4 20"/>
+        <path d="M16 20L12 16 9 19"/>
+      </svg>
+    </div>
+    <h1>No Media Available</h1>
+    <p>Upload images to view them in the gallery</p>
+  </div>
+</div>
+`;
+      }
+      console.log(mediaContent);
+
       let mediaLayout =
         $(`<div class="media-section media-section-gap translate-media">
          <div class="bottom-buttons">
@@ -602,16 +636,8 @@ export class Viewer extends EventDispatcher {
           </button>
         </div>
         <div class="media-container ">
-          <div class="media-scroll">  
-           ${media
-             .map((item) => {
-               return `<div class="media-item">
-                        <img src="${item}" alt="media-image" />
-                      </div>`;
-             })
-             .join(' ')}
-          </div>
-         </div>
+        ${mediaContent} 
+        </div>
         </div>`);
 
       const mediaButton = mediaLayout.find('.media-button');
@@ -630,11 +656,13 @@ export class Viewer extends EventDispatcher {
         '.measurement-tools-container'
       );
       const sidebar_icon = $(domElement).find('#potree_quick_buttons ');
+      const magicButton = $(domElement).find('.magic-button-container');
 
       const hideTools = mediaLayout.find('.hide-tools-button');
       hideTools.on('click', () => {
         hideTools.toggleClass('toggled');
 
+        magicButton.toggleClass('hide-all-tools');
         projection_tool.toggleClass('hide-all-tools');
         measurement_tool.toggleClass('hide-all-tools');
         sidebar_icon.toggleClass('hide-all-tools');
