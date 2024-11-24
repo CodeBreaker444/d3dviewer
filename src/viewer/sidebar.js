@@ -374,7 +374,7 @@ export class Sidebar {
     // REMOVE ALL
     elToolbar.append(
       this.createToolIcon(
-        Potree.resourcePath + '/icons/reset-tools-grey.png',
+        Potree.resourcePath + '/icons/Cross.svg',
         '[title]tt.remove_all_measurement',
         () => {
           this.viewer.scene.removeAllMeasurements();

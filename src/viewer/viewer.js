@@ -616,7 +616,7 @@ export class Viewer extends EventDispatcher {
       </svg>
     </div>
     <h1>No Media Available</h1>
-    <p>Upload images to view them in the gallery</p>
+    <p>images have not been linked with the model yet! you can view them after linking</p>
   </div>
 </div>
 `;

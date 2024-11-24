@@ -1120,7 +1120,9 @@ body {
 }
 
 .placeholder-content {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .placeholder-icon {
@@ -1175,10 +1177,20 @@ body {
 }
 
 .magic-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 15px;
   right: 15px;
+  opacity: 0.5;
   z-index: 11;
+  transition: all 0.5ms linear;
+}
+
+.magic-button-container:hover {
+  opacity: 1;
+  scale: 1.05;
 }
 
 .magic-button {
@@ -1195,16 +1207,8 @@ body {
   cursor: pointer;
   transition: box-shadow 250ms ease-in-out;
 }
-
 .magic-button:hover {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.1);
-}
-
-.magic-button:hover::before {
-  width: 100%;
-  height: 100%;
-  filter: blur(0.5em);
-  opacity: 1;
 }
 
 .magic-button::before {
@@ -1225,12 +1229,19 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 10em;
+  filter: blur(0.5em);
+  opacity: 1;
   z-index: -1;
   animation: ai-button-glow 5s linear infinite;
   transition:
     filter 250ms ease-in-out,
     opacity 250ms ease-in-out;
 }
+
+/* .magic-button:hover::before { */
+/*   width: 100%; */
+/*   height: 100%; */
+/* } */
 
 .magic-button img {
   position: relative;
@@ -1250,7 +1261,6 @@ body {
     background-position: 0 0;
   }
 }
-
 @keyframes pulseImage {
   0% {
     transform: scale(1);
