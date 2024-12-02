@@ -43,7 +43,8 @@ export class Sidebar {
   }
 
   init() {
-    this.initAccordion();
+    // this.initAccordion();
+    this.initBackgroundToggle();
     this.initAppearance();
     this.initToolbar();
     this.initScene();
@@ -55,6 +56,41 @@ export class Sidebar {
     $('#potree_version_number').html(
       Potree.version.major + '.' + Potree.version.minor + Potree.version.suffix
     );
+  }
+
+  initBackgroundToggle() {
+    const themes = {
+      light: {
+        background: '#e5e5e5', // grey background
+      },
+      dark: {
+        background: '#333333', // Dark  background
+      },
+      gradient: {
+        background:
+          'linear-gradient( to bottom, rgba(0, 70, 110, 0.5) 0%, rgba(0, 10, 30, 0.5) 100%)',
+      },
+    };
+
+    // Theme switch event handler
+    $('.theme-label').on('click', function () {
+      const theme = $(this).attr('for').replace('-theme', '');
+
+      $('#potree_render_area').css({
+        background: themes[theme].background,
+      });
+      localStorage.setItem('selectedTheme', theme);
+    });
+
+    // Check for previously saved theme on page load
+    const savedTheme = localStorage.getItem('selectedTheme');
+    if (savedTheme) {
+      $(`#${savedTheme}-theme`).prop('checked', true);
+
+      $('#potree_render_area').css({
+        background: themes[savedTheme].background,
+      });
+    }
   }
 
   initToolbar() {
@@ -378,7 +414,6 @@ export class Sidebar {
         '[title]tt.remove_all_measurement',
         () => {
           this.viewer.scene.removeAllMeasurements();
-          console.log('removing stuff');
           $(event.currentTarget).siblings('img').removeClass('active');
         }
       )

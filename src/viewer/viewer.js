@@ -126,7 +126,6 @@ export class Viewer extends EventDispatcher {
           perspectiveTab.on('click', (e) => {
             const classList = perspectiveTab.attr('class').split(/\s+/);
             const value = perspectiveTab.attr('data-value');
-            console.log(value);
             this.setCameraMode(CameraMode[value]);
 
             if (classList.includes('active')) {
@@ -140,7 +139,6 @@ export class Viewer extends EventDispatcher {
             const classList = orthoTab.attr('class').split(/\s+/);
             const value = orthoTab.attr('data-value');
             this.setCameraMode(CameraMode[value]);
-            console.log(value);
             if (classList.includes('active')) return;
             orthoTab.addClass('active');
             perspectiveTab.removeClass('active');
@@ -459,10 +457,9 @@ export class Viewer extends EventDispatcher {
     $(this.renderArea).empty();
 
     if ($(this.renderArea).find('#potree_failpage').length === 0) {
-      let elFailPage = $(`
-			<div id="#potree_failpage" class="potree_failpage"> 
+      let elFailPage = $(`<div id="#potree_failpage" class="potree_failpage"> 
 				
-				<h1>Potree Encountered An Error </h1>
+				<h1>Deepinspect 3d Encountered An Error </h1>
 
 				<p>
 				This may happen if your browser or graphics card is not supported.
@@ -479,13 +476,12 @@ export class Viewer extends EventDispatcher {
 				</p>
 				<p>
 				If you are already using one of the recommended browsers and WebGL is enabled, 
-				consider filing an issue report at <a href="https://github.com/potree/potree/issues" target="_blank">github</a>,<br>
+				you can reach out to us at <a href="mailto:deepinspect@theunit.com" >deepinspect@theun1t.com</a>
 				including your operating system, graphics card, browser and browser version, as well as the 
 				error message below.<br>
 				Please do not report errors on unsupported browsers.
 				</p>
 
-				<pre id="potree_error_console" style="width: 100%; height: 100%"></pre>
 				
 			</div>`);
 
@@ -590,7 +586,6 @@ export class Viewer extends EventDispatcher {
 
     if ($(domElement).find('.media-section').length === 0) {
       let mediaContent;
-      console.log(media.length);
 
       if (media.length !== 0) {
         mediaContent = `
@@ -621,7 +616,6 @@ export class Viewer extends EventDispatcher {
 </div>
 `;
       }
-      console.log(mediaContent);
 
       let mediaLayout =
         $(`<div class="media-section media-section-gap translate-media">
@@ -643,7 +637,6 @@ export class Viewer extends EventDispatcher {
       const mediaButton = mediaLayout.find('.media-button');
       const mediaIcon = mediaButton.find('.media-icon-img');
       mediaButton.on('click', () => {
-        console.log('clicking buuton');
         mediaLayout.toggleClass('translate-media');
         mediaLayout.toggleClass('media-section-gap');
         mediaIcon.toggleClass('rotate_180');
@@ -660,8 +653,10 @@ export class Viewer extends EventDispatcher {
 
       const hideTools = mediaLayout.find('.hide-tools-button');
       hideTools.on('click', () => {
-        hideTools.toggleClass('toggled');
+        const isVisible = $('#potree_render_area').css('left') === '300px';
+        if (isVisible) this.toggleSidebar();
 
+        hideTools.toggleClass('toggled');
         magicButton.toggleClass('hide-all-tools');
         projection_tool.toggleClass('hide-all-tools');
         measurement_tool.toggleClass('hide-all-tools');
@@ -1447,18 +1442,20 @@ export class Viewer extends EventDispatcher {
 
   toggleSidebar() {
     let renderArea = $('#potree_render_area');
-    let isVisible = renderArea.css('left') !== '0px';
 
     let menuToggle = $('.potree_menu_toggle img');
     menuToggle.toggleClass('rotate_180');
 
     let sidebarContainer = $('#potree_sidebar_container');
+    let isVisible = sidebarContainer.css('left') === '-300px';
     sidebarContainer.toggleClass('translate-sidebar');
 
     if (isVisible) {
-      renderArea.css('left', '0px');
-    } else {
+      sidebarContainer.css('left', '0px');
       renderArea.css('left', '300px');
+    } else {
+      sidebarContainer.css('left', '-300px');
+      renderArea.css('left', '0px');
     }
   }
 
@@ -1578,7 +1575,7 @@ export class Viewer extends EventDispatcher {
         );
 
         $(() => {
-          //initSidebar(this);
+          // initSidebar(this);
           let sidebar = new Sidebar(this);
           sidebar.init();
 
