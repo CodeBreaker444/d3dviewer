@@ -64,7 +64,7 @@ export class Sidebar {
         background: '#e5e5e5', // grey background
       },
       dark: {
-        background: '#333333', // Dark  background
+        background: '#2a2a2a', // Dark  background
       },
       gradient: {
         background:

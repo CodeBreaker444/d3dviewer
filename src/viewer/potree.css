@@ -66,16 +66,16 @@
 
 #potree_sidebar_container {
   position: absolute;
-  left: -300px;
-  z-index: 1;
   width: 300px;
+  left: 0;
   height: 100%;
+  opacity: 0;
   overflow-y: auto;
   font-size: 14px;
   background: rgba(0, 0, 0, 0.8);
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
-  -webkit-transition: left 0.35s;
-  transition: left 0.35s;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
 }
 
 #sidebar_root {
@@ -617,11 +617,11 @@ body {
   box-shadow: none;
 }
 
-.accordion > h2 {
+.accordion > .sidebar-main-heading {
   text-align: center;
 }
 
-.accordion > h2 i {
+.accordion > .sidebar-main-heading i {
   color: rgb(8 145 178);
 }
 
@@ -1477,4 +1477,8 @@ body {
     transform: scale(1);
     filter: brightness(1.2);
   }
+}
+
+.hidden-menu {
+  display: none !important;
 }

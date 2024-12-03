@@ -17,10 +17,10 @@
   <div>
     <div id="potree_menu" class="accordion">
       <!-- APPEARANCE -->
-      <h3 id="menu_appearance" style="display: none">
+      <h3 id="menu_appearance" class="hidden-menu" >
         <span data-i18n="tb.rendering_opt"></span>
       </h3>
-      <div style="display: none">
+      <div class="hidden-menu" >
         <ul class="pv-menu-list">
           <li>
             <span data-i18n="appearance.nb_max_pts"></span>:
@@ -164,10 +164,10 @@
         </div>
 
         <!-- SCENE -->
-        <h3 id="menu_scene" style="display: none">
+        <h3 id="menu_scene" class="hidden-menu">
           <span data-i18n="tb.scene_opt"></span>
         </h3>
-        <div class="pv-menu-list" style="display: none">
+        <div class="pv-menu-list hidden-menu" >
           <div id="scene_export"></div>
 
           <div class="divider"><span>Objects</span></div>
@@ -180,10 +180,10 @@
         </div>
 
         <!-- Classification -->
-        <h3 id="menu_filters" style="display: none">
+        <h3 id="menu_filters" class="hidden-menu">
           <span data-i18n="tb.filters_opt"></span>
         </h3>
-        <div style="display: none">
+        <div class="hidden-menu">
           <div class="divider"><span>Classification</span></div>
 
           <ul id="classificationList" class="pv-menu-list"></ul>
@@ -457,7 +457,7 @@
         </div>
 
         <!-- main content -->
-        <h2>
+        <h2 class="sidebar-main-heading">
           <i class="fas fa-brain"></i>
           AI Analysis
         </h2>

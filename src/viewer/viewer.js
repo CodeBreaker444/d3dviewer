@@ -1442,20 +1442,20 @@ export class Viewer extends EventDispatcher {
 
   toggleSidebar() {
     let renderArea = $('#potree_render_area');
+    const isVisible = renderArea.css('left') === '300px';
 
     let menuToggle = $('.potree_menu_toggle img');
     menuToggle.toggleClass('rotate_180');
 
     let sidebarContainer = $('#potree_sidebar_container');
-    let isVisible = sidebarContainer.css('left') === '-300px';
     sidebarContainer.toggleClass('translate-sidebar');
 
     if (isVisible) {
-      sidebarContainer.css('left', '0px');
-      renderArea.css('left', '300px');
-    } else {
-      sidebarContainer.css('left', '-300px');
       renderArea.css('left', '0px');
+      sidebarContainer.css('opacity', '0');
+    } else {
+      renderArea.css('left', '300px');
+      sidebarContainer.css('opacity', '1');
     }
   }
 
