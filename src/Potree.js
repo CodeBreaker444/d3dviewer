@@ -96,7 +96,19 @@ export const version = {
 export let lru = new LRU();
 
 console.log(
-  'D3dViewer ' + version.major + '.' + version.minor + version.suffix
+  `
+      _ ____      _         _                        
+     | |___ \\    | |       (_)                       
+   __| | __) | __| | __   ___  _____      _____ _ __ 
+  / _\` ||__ < / _\` | \\ \\ / / |/ _ \\ \\ /\\ / / _ \\ '__|
+ | (_| |___) | (_| |  \\ V /| |  __/\\ V  V /  __/ |   
+  \\__,_|____/ \\__,_|   \\_/ |_|\\___| \\_/\\_/ \\___|_|   
+                                                     
+                                                     ` +
+    version.major +
+    '.' +
+    version.minor +
+    version.suffix
 );
 
 export let pointBudget = 1 * 1000 * 1000;

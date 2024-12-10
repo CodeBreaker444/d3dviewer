@@ -234,16 +234,18 @@
 
 #potree_quick_buttons {
   position: absolute;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   top: 0;
   bottom: 0;
-  width: fit-content;
-  height: fit-content;
+  height: 100%;
   z-index: 10000;
 }
 
 .potree_menu_toggle {
   height: 18px;
+  width: 18px;
   background: rgba(45, 97, 136, 0.5);
   border-radius: 0px 5px 5px 0;
   box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3);
@@ -1089,6 +1091,7 @@ body {
   left: 0;
   display: flex;
   justify-content: center;
+  gap: 4px;
   z-index: 10;
 }
 

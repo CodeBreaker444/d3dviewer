@@ -72,7 +72,7 @@ export class Viewer extends EventDispatcher {
           $(domElement).append(potreeMap);
         }
 
-        if ($(domElement).find('.magic-button').length === 0) {
+        if ($(domElement).find('.magic-button-container').length === 0) {
           let magicButton = $(
             `<div class="magic-button-container" >
                <div id='box' class="magic-button">
@@ -665,6 +665,12 @@ export class Viewer extends EventDispatcher {
 
       $(domElement).append(mediaLayout);
     }
+  }
+
+  setSidebar() {
+    // select the main container also the sub containers for projectinfo, inspectionstatus
+    // modelDetails and identified defects.
+    // step 2: create the html of that item based on the data loaded into the sidebar
   }
 
   getBackground() {
@@ -1520,6 +1526,7 @@ export class Viewer extends EventDispatcher {
         imgMapToggle.id = 'potree_map_toggle';
 
         let elButtons = $('#potree_quick_buttons').get(0);
+        let topContainer = $('.camera_projection_container');
 
         elButtons.append(menuToggleWrapper);
         elButtons.append(imgMapToggle);
@@ -1535,18 +1542,32 @@ export class Viewer extends EventDispatcher {
 
           let element = vrButton.element;
 
+          element.classList.add('vr-button');
           element.style.position = '';
           element.style.bottom = '';
           element.style.left = '';
-          element.style.margin = '4px';
+          element.style.margin = '0px';
           element.style.fontSize = '100%';
-          element.style.width = '2.5em';
-          element.style.height = '2.5em';
+          element.style.width = '2em';
+          element.style.height = '2em';
           element.style.padding = '0';
           element.style.textShadow = 'black 2px 2px 2px';
-          element.style.display = 'block';
+          element.style.display = 'flex';
+          element.style.justifyContent = 'center';
+          element.style.alignItems = 'center';
+          element.style.background = 'white';
+          element.style.border = 'none';
+          element.style.borderRadius = '50px';
 
-          elButtons.append(element);
+          const img = document.createElement('img');
+          img.src = `${Potree.resourcePath}/icons/vr-new-icon.png`;
+          img.style.height = '25px';
+          img.style.width = '25px';
+          img.style.padding = '4px';
+          // element.append(span);
+          element.append(img);
+
+          topContainer.append(element);
 
           vrButton.onStart(() => {
             this.dispatchEvent({ type: 'vr_start' });
