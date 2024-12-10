@@ -73,6 +73,31 @@
         'https://res.cloudinary.com/dpy3u1d5b/image/upload/v1705596903/MensTribe/1M1262_Bryan_Pullover_Sweater_Flax_Melange_e_530x.progressive.jpg',
         'https://res.cloudinary.com/dpy3u1d5b/image/upload/v1705596903/MensTribe/1M1262_Bryan_Pullover_Sweater_Flax_Melange_e_530x.progressive.jpg',
       ];
+
+      const sidebar = {
+        isAiAnalyzed: true,
+        projectInfo: {
+          projectId: 'pil-2024-1241y',
+          location: 'BRIGADE-23',
+        },
+        inspectionStatus: {
+          status: 'needs attention',
+          defects: 6,
+          criticalIssues: 3,
+          structuralHealth: 67,
+          priority: 'high',
+        },
+        identifiedDefects: ['Crack', 'Rebar', 'Spall', 'Corrosion'],
+        modelDetails: {
+          modelCode: 'mod-2024-2312h',
+          location: 'BRIGADE-12',
+          xShift: 234,
+          yShift: 123,
+          zShift: 521,
+          vertices: 34212,
+        },
+      };
+
       viewer.setEDLEnabled(true);
       viewer.setFOV(60);
       viewer.setPointBudget(1_000_000);
@@ -80,6 +105,7 @@
       viewer.setControls(viewer.earthControls);
       viewer.setBackground(null);
       viewer.setMedia([]);
+      viewer.setSidebar(sidebar);
 
       // viewer.setDescription(`Point cloud courtesy of PG&E and <a href="https://opentopography.org/">Open Topography</a>.`);
 

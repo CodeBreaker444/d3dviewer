@@ -667,10 +667,128 @@ export class Viewer extends EventDispatcher {
     }
   }
 
-  setSidebar() {
-    // select the main container also the sub containers for projectinfo, inspectionstatus
-    // modelDetails and identified defects.
-    // step 2: create the html of that item based on the data loaded into the sidebar
+  setSidebar(sidebar) {
+    const modelNotAnalyzedBlock = `<div class="inspection-status">
+        <i class="icon fas fa-exclamation-triangle"></i>
+        <span class="message">The model is not analyzed yet!</span>
+    </div>`;
+    const noDefectsBlock = `<div class="inspection-status">
+        <i class="icon shield-icon fas fa-shield-alt no-defects-icon bg-green"></i>
+        <span class="message">No Defects Found in the Model</span>
+    </div>`;
+
+    $(document).ready(() => {
+      const projectinfoHeading = $('#menu_project_info');
+      const inspectHeading = $('#menu_inspection_status');
+      const modelHeading = $('#menu_model_details');
+      const defectsHeading = $('#menu_identified_defects');
+
+      let inspectionStatus, identifiedDefects;
+
+      const projectInfo = `
+        <div class="pv-menu-list">
+          <div class="info-section project-info-section">
+            <div class="info-item">
+              <span class="info-label">Project ID</span>
+              <span class="info-value">${sidebar.projectInfo.projectId || 'None'}</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Location</span>
+              <span class="info-value">${sidebar.projectInfo.location || 'None'}</span>
+            </div>
+          </div>
+        </div>`;
+
+      sidebar.inspectionStatus = undefined;
+      if (sidebar.inspectionStatus) {
+        inspectionStatus = `
+       <div class="pv-menu-list">
+          <div class="info-section">
+            <div class="info-item mb-4">
+              <span class="info-label">Status</span>
+              <span class="status-badge warning">
+                <i class="fas fa-exclamation-circle"></i>
+                ${sidebar.inspectionStatus.status} 
+              </span>
+            </div>
+            <div class="defect-stats grid grid-cols-2 gap-2">
+              <div class="stat-card">
+                <div class="stat-value">${sidebar.inspectionStatus.defects}</div>
+                <div class="stat-label">Defects Found</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">${sidebar.inspectionStatus.criticalIssues}</div>
+                <div class="stat-label">Critical Issues</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">${sidebar.inspectionStatus.structuralHealth}%</div>
+                <div class="stat-label">Structural Health</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">${sidebar.inspectionStatus.priority}</div>
+                <div class="stat-label">Priority</div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      } else {
+        inspectionStatus = modelNotAnalyzedBlock;
+      }
+
+      const modelDetails = `<div class="pv-menu-list">
+          <div class="info-section">
+            <div class="grid grid-cols-1 gap-2">
+              <div class="info-item">
+                <span class="info-label">Model ID</span>
+                <span class="info-value">${sidebar.modelDetails.modelCode}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Model Location</span>
+                <span class="info-value">${sidebar.modelDetails.location || 'No Location'}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Vertices</span>
+                <span class="info-value">${sidebar.modelDetails.vertices || 0}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">xShift</span>
+                <span class="info-value">${sidebar.modelDetails.xShift || 0}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">yShift</span>
+                <span class="info-value">${sidebar.modelDetails.yShift || 0}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">zShift</span>
+                <span class="info-value">${sidebar.modelDetails.zShift || 0}</span>
+              </div>
+            </div>
+          </div>
+        </div>`;
+
+      sidebar.identifiedDefects = [];
+      if (sidebar.identifiedDefects.length > 0) {
+        identifiedDefects = `
+        <div class="pv-menu-list">
+          <div class="info-section">
+           ${sidebar.identifiedDefects
+             .map(
+               (item) =>
+                 `<div class="info-item"><span class="info-label">${item}</span></div>`
+             )
+             .join(' ')}
+        `;
+      } else if (!sidebar.isAiAnalyzed) {
+        identifiedDefects = modelNotAnalyzedBlock;
+      } else {
+        identifiedDefects = noDefectsBlock;
+      }
+
+      projectinfoHeading.after(projectInfo);
+      inspectHeading.after(inspectionStatus);
+      modelHeading.after(modelDetails);
+      defectsHeading.after(identifiedDefects);
+    });
   }
 
   getBackground() {
@@ -1564,7 +1682,6 @@ export class Viewer extends EventDispatcher {
           img.style.height = '25px';
           img.style.width = '25px';
           img.style.padding = '4px';
-          // element.append(span);
           element.append(img);
 
           topContainer.append(element);
