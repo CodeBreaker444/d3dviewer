@@ -1661,28 +1661,12 @@ export class Viewer extends EventDispatcher {
           let element = vrButton.element;
 
           element.classList.add('vr-button');
-          element.style.position = '';
-          element.style.bottom = '';
-          element.style.left = '';
-          element.style.margin = '0px';
-          element.style.fontSize = '100%';
-          element.style.width = '2em';
-          element.style.height = '2em';
-          element.style.padding = '0';
-          element.style.textShadow = 'black 2px 2px 2px';
-          element.style.display = 'flex';
-          element.style.justifyContent = 'center';
-          element.style.alignItems = 'center';
-          element.style.background = 'white';
-          element.style.border = 'none';
-          element.style.borderRadius = '50px';
 
-          const img = document.createElement('img');
-          img.src = `${Potree.resourcePath}/icons/vr-new-icon.png`;
-          img.style.height = '25px';
-          img.style.width = '25px';
-          img.style.padding = '4px';
-          element.append(img);
+          // const img = document.createElement('img');
+          // img.src = `${Potree.resourcePath}/icons/vr-new-icon.png`;
+          // img.style.height = '25px';
+          // img.style.width = '25px';
+          // element.append(img);
 
           topContainer.append(element);
 
