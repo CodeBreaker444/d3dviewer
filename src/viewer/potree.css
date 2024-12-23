@@ -733,8 +733,8 @@ body {
   color: #2d6d82;
 }
 
-#light-theme:checked ~ .theme-toggle .light-theme-label,
-#dark-theme:checked ~ .theme-toggle .dark-theme-label,
+#grey-theme:checked ~ .theme-toggle .grey-theme-label,
+#black-theme:checked ~ .theme-toggle .black-theme-label,
 #gradient-theme:checked ~ .theme-toggle .gradient-theme-label {
   background: rgba(45, 109, 130, 0.2);
   color: #2d6d82;
