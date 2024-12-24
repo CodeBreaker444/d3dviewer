@@ -677,6 +677,39 @@ export class Viewer extends EventDispatcher {
         <span class="message">No Defects Found in the Model</span>
     </div>`;
 
+    let inspectionStatusData;
+    if (sidebar.inspectionStatus) {
+      inspectionStatusData = `<div class="pv-menu-list">
+          <div class="info-section">
+            <div class="info-item mb-4">
+              <span class="info-label">Status</span>
+              <span class="status-badge warning">
+                <i class="fas fa-exclamation-circle"></i>
+                ${sidebar.inspectionStatus.status || 'no status'} 
+              </span>
+            </div>
+            <div class="defect-stats grid grid-cols-2 gap-2">
+              <div class="stat-card">
+                <div class="stat-value">${sidebar.inspectionStatus.defects || 'none'}</div>
+                <div class="stat-label">Defects Found</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">${sidebar.inspectionStatus.criticalIssues || 'none'}</div>
+                <div class="stat-label">Critical Issues</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">${sidebar.inspectionStatus.structuralHealth || 0}%</div>
+                <div class="stat-label">Structural Health</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value">${sidebar.inspectionStatus.priority || 'not added'}</div>
+                <div class="stat-label">Priority</div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+
     $(document).ready(() => {
       const projectinfoHeading = $('#menu_project_info');
       const inspectHeading = $('#menu_inspection_status');
@@ -690,48 +723,22 @@ export class Viewer extends EventDispatcher {
           <div class="info-section project-info-section">
             <div class="info-item">
               <span class="info-label">Project ID</span>
-              <span class="info-value">${sidebar.projectInfo.projectId || 'None'}</span>
+              <span class="info-value">${sidebar.projectInfo.projectId || 'No Project id'}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Location</span>
-              <span class="info-value">${sidebar.projectInfo.location || 'None'}</span>
+              <span class="info-value">${sidebar.projectInfo.location || 'No Location'}</span>
             </div>
           </div>
         </div>`;
 
-      sidebar.inspectionStatus = undefined;
-      if (sidebar.inspectionStatus) {
-        inspectionStatus = `
-       <div class="pv-menu-list">
-          <div class="info-section">
-            <div class="info-item mb-4">
-              <span class="info-label">Status</span>
-              <span class="status-badge warning">
-                <i class="fas fa-exclamation-circle"></i>
-                ${sidebar.inspectionStatus.status} 
-              </span>
-            </div>
-            <div class="defect-stats grid grid-cols-2 gap-2">
-              <div class="stat-card">
-                <div class="stat-value">${sidebar.inspectionStatus.defects}</div>
-                <div class="stat-label">Defects Found</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value">${sidebar.inspectionStatus.criticalIssues}</div>
-                <div class="stat-label">Critical Issues</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value">${sidebar.inspectionStatus.structuralHealth}%</div>
-                <div class="stat-label">Structural Health</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value">${sidebar.inspectionStatus.priority}</div>
-                <div class="stat-label">Priority</div>
-              </div>
-            </div>
-          </div>
-        </div>`;
-      } else {
+      if (sidebar.inspectionStatus && sidebar.role !== 'user') {
+        inspectionStatus = !sidebar.isAiAnalyzed
+          ? `${modelNotAnalyzedBlock}${inspectionStatusData}`
+          : inspectionStatusData;
+      } else if (sidebar.inspectionStatus && sidebar.role === 'user') {
+        inspectionStatus = inspectionStatusData;
+      } else if (!sidebar.inspectionStatus) {
         inspectionStatus = modelNotAnalyzedBlock;
       }
 
@@ -778,8 +785,6 @@ export class Viewer extends EventDispatcher {
              )
              .join(' ')}
         `;
-      } else if (!sidebar.isAiAnalyzed) {
-        identifiedDefects = modelNotAnalyzedBlock;
       } else {
         identifiedDefects = noDefectsBlock;
       }
