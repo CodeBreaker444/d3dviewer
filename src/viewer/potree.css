@@ -619,11 +619,30 @@ body {
   box-shadow: none;
 }
 
-.accordion > .sidebar-main-heading {
-  text-align: center;
+.accordion > .sidebar-header {
+  margin: 16px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.accordion > .sidebar-main-heading i {
+.accordion > .sidebar-header button {
+  cursor: pointer;
+  height: fit-content;
+  background: #333333;
+  color: white;
+  border: none;
+  /* border: 1px solid rgb(8 145 178); */
+  /* border-radius: 3px; */
+}
+
+.accordion > .sidebar-header h2 {
+  margin: 0;
+}
+
+.accordion > .sidebar-header .sidebar-main-heading i {
   color: rgb(8 145 178);
 }
 

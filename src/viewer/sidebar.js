@@ -74,39 +74,6 @@ export class Sidebar {
       $(`#${savedTheme}-theme`).prop('checked', true);
       this.viewer.setBackground(savedTheme);
     }
-
-    // const themes = {
-    //   light: {
-    //     background: '#e5e5e5', // grey background
-    //   },
-    //   dark: {
-    //     background: '#2a2a2a', // Dark  background
-    //   },
-    //   gradient: {
-    //     background:
-    //       'linear-gradient( to bottom, rgba(0, 70, 110, 0.5) 0%, rgba(0, 10, 30, 0.5) 100%)',
-    //   },
-    // };
-    //
-    // // Theme switch event handler
-    // $('.theme-label').on('click', function () {
-    //   const theme = $(this).attr('for').replace('-theme', '');
-    //
-    //   $('#potree_render_area').css({
-    //     background: themes[theme].background,
-    //   });
-    //   localStorage.setItem('selectedTheme', theme);
-    // });
-    //
-    // // Check for previously saved theme on page load
-    // const savedTheme = localStorage.getItem('selectedTheme');
-    // if (savedTheme) {
-    //   $(`#${savedTheme}-theme`).prop('checked', true);
-    //
-    //   $('#potree_render_area').css({
-    //     background: themes[savedTheme].background,
-    //   });
-    // }
   }
 
   initToolbar() {

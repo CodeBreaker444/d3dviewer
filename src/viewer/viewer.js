@@ -667,7 +667,7 @@ export class Viewer extends EventDispatcher {
     }
   }
 
-  setSidebar(sidebar) {
+  setSidebar(sidebar, callback) {
     const modelNotAnalyzedBlock = `<div class="inspection-status">
         <i class="icon fas fa-exclamation-triangle"></i>
         <span class="message">The model is not analyzed yet!</span>
@@ -715,6 +715,9 @@ export class Viewer extends EventDispatcher {
       const inspectHeading = $('#menu_inspection_status');
       const modelHeading = $('#menu_model_details');
       const defectsHeading = $('#menu_identified_defects');
+      const editButton = $('#edit-models-button');
+
+      console.log(editButton);
 
       let inspectionStatus, identifiedDefects;
 
@@ -793,6 +796,8 @@ export class Viewer extends EventDispatcher {
       inspectHeading.after(inspectionStatus);
       modelHeading.after(modelDetails);
       defectsHeading.after(identifiedDefects);
+
+      editButton.on('click', callback);
     });
   }
 

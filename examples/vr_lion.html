@@ -37,7 +37,6 @@
     <script src="../libs/jquery/jquery-3.1.1.min.js"></script>
     <script src="../libs/spectrum/spectrum.js"></script>
     <script src="../libs/jquery-ui/jquery-ui.min.js"></script>
-
     <script src="../libs/other/BinaryHeap.js"></script>
     <script src="../libs/tween/tween.min.js"></script>
     <script src="../libs/d3/d3.js"></script>
@@ -106,7 +105,9 @@
       viewer.setControls(viewer.earthControls);
       viewer.setBackground(null);
       viewer.setMedia([]);
-      viewer.setSidebar(sidebar);
+      viewer.setSidebar(sidebar, () => {
+        console.log('callback function working');
+      });
 
       // viewer.setDescription(`Point cloud courtesy of PG&E and <a href="https://opentopography.org/">Open Topography</a>.`);
 
