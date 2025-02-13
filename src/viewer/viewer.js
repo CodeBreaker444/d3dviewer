@@ -72,17 +72,17 @@ export class Viewer extends EventDispatcher {
           $(domElement).append(potreeMap);
         }
 
-        if ($(domElement).find('.magic-button-container').length === 0) {
-          let magicButton = $(
-            `<div class="magic-button-container" >
-               <div id='box' class="magic-button">
-                  <img src="${Potree.resourcePath}/icons/magic-stick.svg" width="20px" height="20px" />
-              </div>
-            </div>`
-          );
-
-          $(domElement).append(magicButton);
-        }
+        // if ($(domElement).find('.magic-button-container').length === 0) {
+        //   let magicButton = $(
+        //     `<div class="magic-button-container" >
+        //        <div id='box' class="magic-button">
+        //           <img src="${Potree.resourcePath}/icons/magic-stick.svg" width="20px" height="20px" />
+        //       </div>
+        //     </div>`
+        //   );
+        //
+        //   $(domElement).append(magicButton);
+        // }
 
         if ($(domElement).find('.camera_projection_container').length === 0) {
           let button = $(`<button class="cam_proj_button">
@@ -497,6 +497,9 @@ export class Viewer extends EventDispatcher {
   // ------------------------------------------------------------------------------------
   // Viewer API
   // ------------------------------------------------------------------------------------
+  getScene() {
+    return this.scene;
+  }
 
   setScene(scene) {
     if (scene === this.scene) {
@@ -809,13 +812,15 @@ export class Viewer extends EventDispatcher {
     if (this.background === bg) {
       return;
     }
-
-    if (bg === 'skybox') {
+    // showing the skybox even for the gradient bg
+    if (bg === 'skybox' || bg === 'gradient') {
       this.skybox = Utils.loadSkybox(
         new URL(Potree.resourcePath + '/textures/skybox2/').href
       );
+      bg = 'skybox';
     }
     this.background = bg;
+
     this.dispatchEvent({ type: 'background_changed', viewer: this });
   }
 
@@ -1670,7 +1675,7 @@ export class Viewer extends EventDispatcher {
 
           let element = vrButton.element;
 
-          element.classList.add('vr-button');
+          element.classList.add('vr-button', 'potree-vr-button');
 
           // const img = document.createElement('img');
           // img.src = `${Potree.resourcePath}/icons/vr-new-icon.png`;
