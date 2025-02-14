@@ -1538,7 +1538,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10rem;
+  width: 5rem;
   overflow: hidden;
   height: 2.3rem;
   background-size: 300% 300%;
@@ -1558,6 +1558,12 @@ body {
     );
   background-origin: border-box;
   background-clip: content-box, border-box;
+}
+
+@media (max-width: 600px) {
+  .camera_projection span {
+    display: none;
+  }
 }
 
 #container-stars {

@@ -28,7 +28,7 @@ class VRButton {
     button.element = element;
 
     function setEnter() {
-      button.element.innerHTML = `<strong>ENTER VR</strong>
+      button.element.innerHTML = `<strong>VR</strong>
   <div id="container-stars">
     <div id="stars"></div>
   </div>
