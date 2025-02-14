@@ -292,6 +292,14 @@ export class Viewer extends EventDispatcher {
       this.skybox = null;
       this.clock = new THREE.Clock();
       this.background = null;
+      this.customEnvs = ['lava', 'water', 'deepinspect', 'mountains', 'space'];
+      this.customEnvFormat = {
+        lava: '.jpg',
+        space: '.png',
+        mountains: '.jpg',
+        deepinspect: '.jpg',
+        water: '.jpg',
+      };
 
       this.initThree();
 
@@ -812,15 +820,32 @@ export class Viewer extends EventDispatcher {
     if (this.background === bg) {
       return;
     }
+
     // showing the skybox even for the gradient bg
-    if (bg === 'skybox' || bg === 'gradient') {
+    if (bg === 'gradient') {
       this.skybox = Utils.loadSkybox(
-        new URL(Potree.resourcePath + '/textures/skybox2/').href
+        new URL(Potree.resourcePath + `/textures/deepinspect/`).href,
+        this.customEnvFormat.deepinspect
       );
       bg = 'skybox';
     }
+
     this.background = bg;
 
+    this.dispatchEvent({ type: 'background_changed', viewer: this });
+  }
+
+  setCustomBg(customEnv) {
+    if (!this.customEnvs.includes(customEnv)) {
+      throw new Error('passed in a wrong option');
+    }
+
+    this.skybox = Utils.loadSkybox(
+      new URL(Potree.resourcePath + `/textures/${customEnv}/`).href,
+      this.customEnvFormat[customEnv]
+    );
+
+    this.background = 'skybox';
     this.dispatchEvent({ type: 'background_changed', viewer: this });
   }
 

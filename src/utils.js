@@ -311,7 +311,7 @@ export class Utils {
     }
   }
 
-  static loadSkybox(path) {
+  static loadSkybox(path, format = '.jpg') {
     let parent = new THREE.Object3D('skybox_root');
 
     let camera = new THREE.PerspectiveCamera(
@@ -323,7 +323,7 @@ export class Utils {
     camera.up.set(0, 0, 1);
     let scene = new THREE.Scene();
 
-    let format = '.jpg';
+    // let format = '.jpg';
     let urls = [
       path + 'px' + format,
       path + 'nx' + format,

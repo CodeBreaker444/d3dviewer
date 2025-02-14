@@ -69,11 +69,11 @@ export class Sidebar {
       });
     });
 
-    const savedTheme = localStorage.getItem('selectedTheme');
-    if (savedTheme) {
-      $(`#${savedTheme}-theme`).prop('checked', true);
-      this.viewer.setBackground(savedTheme);
-    }
+    // const savedTheme = localStorage.getItem('selectedTheme');
+    // if (savedTheme) {
+    //   $(`#${savedTheme}-theme`).prop('checked', true);
+    //   this.viewer.setBackground('skybox', 'lava');
+    // }
   }
 
   initToolbar() {

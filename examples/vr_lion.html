@@ -102,8 +102,9 @@
       viewer.setFOV(60);
       viewer.setPointBudget(1_000_000);
       viewer.loadSettingsFromURL();
-      viewer.setControls(viewer.earthControls);
-      viewer.setBackground(null);
+      viewer.setControls(viewer.orbitControls);
+      viewer.setBackground('gradient');
+      viewer.setCustomBg('space');
       viewer.setMedia([]);
       viewer.setSidebar(sidebar, () => {
         console.log('callback function working');
